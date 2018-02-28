@@ -12,6 +12,7 @@ class StageOne extends Component {
 
 		this.handleClick = this.handleClick.bind(this);
 		this.handleInput = this.handleInput.bind(this);
+		this.handleKeyUp = this.handleKeyUp.bind(this);
 	}
 
 	componentDidMount() {
@@ -31,13 +32,18 @@ class StageOne extends Component {
 	}
 
 	handleClick(e) {
-		// console.log('You wrote: ', this.state.searchText);
 		this.props.setSelectedUser(this.state.searchText);
+	}
+
+	handleKeyUp(e) {
+		if (e.keyCode === 13) {
+			this.handleClick(e);
+		}
 	}
 	render() {
 		return (
 			<div className={[ 'stage-one-container', this.state.show ].join(' ')}>
-				<input name="user" type="text" onChange={this.handleInput} />
+				<input name="user" type="text" onChange={this.handleInput} onKeyUp={this.handleKeyUp} />
 				<input type="button" value="Search" onClick={this.handleClick} />
 			</div>
 		);

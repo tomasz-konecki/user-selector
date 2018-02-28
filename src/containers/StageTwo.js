@@ -11,7 +11,6 @@ class StageTwo extends Component {
 	}
 
 	handleBack() {
-		console.log('handleBack!!!!!!');
 		this.props.resetState();
 	}
 
